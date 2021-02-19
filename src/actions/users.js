@@ -1,6 +1,7 @@
 export const Types = {
     GET_USERS_REQUEST: 'users/get_users_request',
-    GET_USERS_SUCCESS: 'users/get_users_success'
+    GET_USERS_SUCCESS: 'users/get_users_success',
+    CREATE_USER_REQUEST: 'users/create_users_request'
 };
 
 export const getUsersRequest = () => (
