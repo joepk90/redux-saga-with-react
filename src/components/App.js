@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import { getUsersRequest } from '../actions/users'
+import UsersList from './UsersList';
 
 class App extends Component {
 
@@ -10,8 +11,15 @@ class App extends Component {
   }
 
   render() {
+
+    const { items } = this.props;
+
+    if (!items) return;
+
     return (
-      <div>Test</div>
+      <div style={{ margin: '0 auto', padding: '20px', maxWidth: '600px' }}>
+        <UsersList users={items} />
+      </div>
     );
   }
 
