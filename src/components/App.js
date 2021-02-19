@@ -5,9 +5,7 @@ import { getUsersRequest } from '../actions/users'
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-
+  componentDidMount() {
     this.props.getUsersRequest();
   }
 
