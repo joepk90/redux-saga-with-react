@@ -35,7 +35,20 @@ function* watchGetUsersRequest() {
  */
 
 function* createUser(action) {
-    yield;
+
+    const { firstName, lastName } = action.payload;
+
+    try {
+
+        // persist user data
+        yield call(api.createUser, { firstName, lastName });
+
+        // re-request getUser saga (shouldn't we dispatch the action again here instead?)
+        yield call(getUsers);
+
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 function* watchCreateUserRequest() {
