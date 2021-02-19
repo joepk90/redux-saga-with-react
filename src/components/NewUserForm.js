@@ -26,13 +26,24 @@ class NewUserForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+
+        this.props.onSubmit({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName
+        })
+
+        this.setState({
+            firstName: '',
+            lastName: '',
+        });
+
     }
 
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
 
-                <FormGroup>
+                <FormGroup onSubmit={this}>
                     <Label>First Name</Label>
                     <Input required placeholder="" onChange={this.handleFirstNameChange} value={this.state.firstName} />
                 </FormGroup>
