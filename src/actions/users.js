@@ -18,3 +18,11 @@ export const getUsersSuccess = ({ items }) => (
         }
     }
 );
+
+export const createUserRequst = ({ firstName, lastName }) => ({
+    type: Types.CREATE_USER_REQUEST,
+    payload: {
+        firstName,
+        lastName
+    }
+})

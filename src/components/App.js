@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { getUsersRequest } from '../actions/users'
+import { getUsersRequest, createUserRequst } from '../actions/users'
 import UsersList from './UsersList';
 import NewUserForm from './NewUserForm';
 
@@ -12,7 +12,10 @@ class App extends Component {
   }
 
   handleSubmit = ({ firstName, lastName }) => {
-
+    this.props.createUserRequst({
+      firstName,
+      lastName
+    });
   }
 
   render() {
@@ -35,4 +38,7 @@ const mapStateToProps = ({ users }) => {
   return users;
 }
 
-export default connect(mapStateToProps, { getUsersRequest })(App);
+export default connect(mapStateToProps, {
+  getUsersRequest,
+  createUserRequst
+})(App);
