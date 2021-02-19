@@ -43,7 +43,7 @@ class NewUserForm extends Component {
         return (
             <Form onSubmit={this.handleSubmit}>
 
-                <FormGroup onSubmit={this}>
+                <FormGroup>
                     <Label>First Name</Label>
                     <Input required placeholder="" onChange={this.handleFirstNameChange} value={this.state.firstName} />
                 </FormGroup>
