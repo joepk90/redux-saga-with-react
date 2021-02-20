@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { getUsersRequest, createUserRequst, deleteUserReqeust } from '../actions/users'
+import { getUsersRequest, createUserRequst, deleteUserReqeust, usersError } from '../actions/users'
 import UsersList from './UsersList';
 import NewUserForm from './NewUserForm';
 import { Alert } from 'reactstrap';
@@ -26,7 +26,9 @@ class App extends Component {
   }
 
   handleCloseAlert = () => {
-
+    this.props.usersError({
+      error: ''
+    });
   }
 
   render() {
@@ -58,5 +60,6 @@ const mapStateToProps = ({ users }) => {
 export default connect(mapStateToProps, {
   getUsersRequest,
   createUserRequst,
-  deleteUserReqeust
+  deleteUserReqeust,
+  usersError
 })(App);
