@@ -21,7 +21,9 @@ function* getUsers() {
         }))
 
     } catch (e) {
-        console.log(e);
+        yield put(actions.usersError({
+            error: 'An error occured when trying to get users: ' + e
+        }));
     }
 
 }
@@ -47,7 +49,9 @@ function* createUser(action) {
         yield call(getUsers);
 
     } catch (e) {
-        console.log(e);
+        yield put(actions.usersError({
+            error: 'An error occured when trying to create the user: ' + e
+        }));
     }
 }
 
@@ -70,7 +74,9 @@ function* deleteUser({ userId }) {
         yield call(getUsers);
 
     } catch (e) {
-        console.log(e);
+        yield put(actions.usersError({
+            error: 'An error occured when trying to delete the user: ' + e
+        }));
     }
 }
 
