@@ -13,7 +13,7 @@ import rootSaga from './sagas';
 import reducers from './reducers';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://rem-rest-api.herokuapp.com/api/';
+axios.defaults.baseURL = 'https://rem-rest-api.herokuapp.com/api/';
 
 const sagaMiddleware = createSagaMiddleware();
 
