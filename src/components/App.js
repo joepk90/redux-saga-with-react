@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { getUsersRequest, createUserRequst } from '../actions/users'
+import { getUsersRequest, createUserRequst, deleteUserReqeust } from '../actions/users'
 import UsersList from './UsersList';
 import NewUserForm from './NewUserForm';
 
@@ -18,6 +18,12 @@ class App extends Component {
     });
   }
 
+  handleDeleteUserClick = (userId) => {
+    this.props.deleteUserReqeust({
+      userId
+    });
+  }
+
   render() {
 
     const { items } = this.props;
@@ -27,7 +33,7 @@ class App extends Component {
     return (
       <div style={{ margin: '0 auto', padding: '20px', maxWidth: '600px' }}>
         <NewUserForm onSubmit={this.handleSubmit} />
-        <UsersList users={items} />
+        <UsersList users={items} onDeleteUser={this.handleDeleteUserClick} />
       </div>
     );
   }
@@ -40,5 +46,6 @@ const mapStateToProps = ({ users }) => {
 
 export default connect(mapStateToProps, {
   getUsersRequest,
-  createUserRequst
+  createUserRequst,
+  deleteUserReqeust
 })(App);

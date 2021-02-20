@@ -10,7 +10,8 @@ const sortNames = (a, b) => {
     return 0;
 }
 
-const UsersList = ({ users }) => {
+const UsersList = ({ users, onDeleteUser }) => {
+
     return (
         <ListGroup>
             {users.sort(sortNames).map(user => {
@@ -20,7 +21,10 @@ const UsersList = ({ users }) => {
                             {user.firstName} {user.lastName}
                         </div>
                         <div>
-                            <Button outline color='danger'>Delete</Button>
+                            <Button
+                                outline color='danger'
+                                onClick={() => onDeleteUser(user.id)}
+                            >Delete</Button>
                         </div>
                     </section>
                 </ListGroupItem>
