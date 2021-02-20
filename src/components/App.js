@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getUsersRequest, createUserRequst, deleteUserReqeust } from '../actions/users'
 import UsersList from './UsersList';
 import NewUserForm from './NewUserForm';
+import { Alert } from 'reactstrap';
 
 class App extends Component {
 
@@ -24,14 +25,24 @@ class App extends Component {
     });
   }
 
+  handleCloseAlert = () => {
+
+  }
+
   render() {
 
-    const { items } = this.props;
+    const { items, error } = this.props;
 
     if (!items) return;
 
     return (
       <div style={{ margin: '0 auto', padding: '20px', maxWidth: '600px' }}>
+
+        <Alert color="danger" isOpen={!!error} toggle={this.handleCloseAlert}>
+          {error}
+        </Alert>
+
+
         <NewUserForm onSubmit={this.handleSubmit} />
         <UsersList users={items} onDeleteUser={this.handleDeleteUserClick} />
       </div>
